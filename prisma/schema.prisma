@@ -1,4 +1,3 @@
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -6,4 +5,12 @@ generator client {
 datasource db {
   provider = "mongodb"
   url      = env("mongodb+srv://blog:mrz2002@blogapp.fhjfq.mongodb.net/")
+}
+
+model Blog {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  description String
+  imageUrl  String?
+  createdAt DateTime @default(now()) @db.Timestamp
 }
