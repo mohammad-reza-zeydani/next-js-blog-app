@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import plugin from "tailwindcss/plugin"
 export default {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -10,8 +11,11 @@ export default {
     },
   },
   plugins: [  
-    function ({ addVariant}) {
-    addVariant('child', '& > *');
-    addVariant('child-hover', '& > *:hover');
-}],
+    plugin(
+      function ({ addVariant}) {
+        addVariant('child', '& > *');
+        addVariant('child-hover', '& > *:hover');
+    }
+    )
+],
 } satisfies Config;
