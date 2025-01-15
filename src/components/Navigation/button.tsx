@@ -12,7 +12,7 @@ const Button = () => {
         {
             id:'2',
             name:"Create Posts",
-            path:"/createPost"
+            path:"/create"
         }
     ]
     return ( 
