@@ -4,13 +4,14 @@ generator client {
 
 datasource db {
   provider = "mongodb"
-  url      = env("mongodb+srv://blog:mrz2002@blogapp.fhjfq.mongodb.net/")
+  url      = env("DATABASE_URL")
 }
 
 model Blog {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
   title       String
   description String
-  imageUrl  String?
-  createdAt DateTime @default(now()) @db.Timestamp
+  imageUrl    String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
