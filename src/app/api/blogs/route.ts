@@ -11,14 +11,5 @@ export async function GET() {
     });
     return NextResponse.json(newBlog);
   }
-  export async function DELETE(req: Request) {
-    const { id } = await req.json();
-    try {
-        await prisma.blog.delete({ where: { id } });
-        return NextResponse.json({ success: true });
-      } catch (error) {
-        return NextResponse.json({ success: false, error: "Blog not found" }, { status: 404 });
-      }
-      
-  }
+
   
