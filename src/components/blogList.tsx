@@ -5,13 +5,7 @@ const BlogList = () => {
     console.log(data,'data')
     return ( 
         <h1>
-            {
-                data && data.map((data:any)=>{
-                   return(
-                    <h1>{data}</h1>
-                   )
-                })
-            }
+          test
         </h1>
      );
 }

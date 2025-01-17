@@ -28,11 +28,11 @@ export async function PUT(
   { params }: { params: { id: string } },
 ) {
   try {
-    const { title, description, imageUrl } = await req.json();
+    const { title, description, imageUrl,category} = await req.json();
 
     const updatedBlog = await prisma.blog.update({
       where: { id: params.id },
-      data: { title, description, imageUrl },
+      data: { title, description, imageUrl,category},
     });
 
     return NextResponse.json(updatedBlog);

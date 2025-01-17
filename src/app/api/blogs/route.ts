@@ -5,9 +5,9 @@ export async function GET() {
     return NextResponse.json(blogs);
   }
   export async function POST(req: Request) {
-    const { title, description, imageUrl } = await req.json();
+    const { title, description, imageUrl,category } = await req.json();
     const newBlog = await prisma.blog.create({
-      data: { title, description, imageUrl },
+      data: { title, description, imageUrl,category},
     });
     return NextResponse.json(newBlog);
   }

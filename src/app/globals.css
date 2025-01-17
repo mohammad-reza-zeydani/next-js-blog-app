@@ -1,4 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+@layer components{
+    .input{
+        @apply outline-none p-3 rounded-sm bg-slate-400 placeholder-zinc-700
+    }
+}
