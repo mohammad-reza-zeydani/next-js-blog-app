@@ -28,18 +28,23 @@ export async function PUT(
   { params }: { params: { id: string } },
 ) {
   try {
-    const { title, description, imageUrl,category} = await req.json();
+    const { id } = params;
+    const { title, description, category, imageUrl } = await req.json(); // گرفتن داده‌ها از body
 
+    const existingBlog = await prisma.blog.findUnique({ where: { id } });
+    if (!existingBlog) {
+      return NextResponse.json({ error: "Blog not found" }, { status: 404 });
+    }
     const updatedBlog = await prisma.blog.update({
-      where: { id: params.id },
-      data: { title, description, imageUrl,category},
+      where: { id },
+      data: { title, description, category, imageUrl },
     });
 
     return NextResponse.json(updatedBlog);
-  } catch (error) {
+  } catch (error: any) {
     console.error("Error updating blog:", error);
     return NextResponse.json(
-      { error: "Failed to update blog" },
+      { error: "Failed to update blog", details: error.message },
       { status: 500 },
     );
   }
@@ -63,4 +68,3 @@ export async function DELETE(
     );
   }
 }
-

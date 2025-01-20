@@ -1,12 +1,8 @@
 "use client";
 import { useForm } from "react-hook-form";
 import { useMyContext } from "@/context/context";
-interface BlogFormProps {
-  defaultValues?: { title: string; description: string; imageUrl: string;category:string
-   };
-  onSubmit: (data: { title: string; description: string; imageUrl: string,category:string }) => void;
-}
-const BlogForm: React.FC<BlogFormProps> = ({ defaultValues, onSubmit }) => {
+import { TBlogFormProps } from "./types";
+const BlogForm: React.FC<TBlogFormProps> = ({ defaultValues, onSubmit }) => {
   const {
     register,
     handleSubmit,
@@ -51,7 +47,10 @@ const BlogForm: React.FC<BlogFormProps> = ({ defaultValues, onSubmit }) => {
       {errors.description && <p className="text-red-700 text-lg">{errors.description.message}</p>}
       {/* add image link input */}
       <input
-        type=""
+      {
+        ...register("imageUrl")
+      }
+        type="text"
         placeholder="Image URL (optional)"
         className="input"
       />
@@ -63,7 +62,7 @@ const BlogForm: React.FC<BlogFormProps> = ({ defaultValues, onSubmit }) => {
         <option value="health">Health</option>
       </select>
       {/* submit button */}
-      <button type="submit" className="bg-zinc-700 text-slate-300 text-xl p-3 rounded-sm">
+      <button type="submit" className={`bg-zinc-700 text-slate-300 text-xl p-3 rounded-sm ${isSending ? "cursor-not-allowed":"cursor-pointer"}`}>
         {/* while sending is true,it most be Submiting */}
         {!isSending ?"Submit":"Submiting..."}
       </button>

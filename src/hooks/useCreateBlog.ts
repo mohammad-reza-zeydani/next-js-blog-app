@@ -1,19 +1,19 @@
 'use client'
-import { useMutation } from "@tanstack/react-query";
-import { useQueryClient } from "@tanstack/react-query";
+import { useMutation,useQueryClient } from "@tanstack/react-query";
 import { useMyContext } from "@/context/context";
 import axios from "axios";
+import { TData } from "@/components/types";
 const useCreateBlog = () => {
     const {setIsSending}=useMyContext()
     const client=useQueryClient()
     const {mutate}=useMutation({
-        mutationFn:async(data:any)=>{
+        mutationFn:async(data:TData)=>{
             const response=await axios.post("/api/blogs",data)
             return response.data
         },
         onSuccess:()=>{
-            client.invalidateQueries({queryKey:['blogs']})
             setIsSending(false)
+            client.invalidateQueries({queryKey:['blogs']})
             alert("your blog created successfully")
         },
         onError: (error:Error | null) => {
