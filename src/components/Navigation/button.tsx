@@ -2,13 +2,17 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation"; // Importing hook to get the current pathname
-
+interface Tlinks  {
+    id:string,
+    name:string,
+    path:string
+}
 const Button = () => {
   // Get the current path of the page
   const pathName = usePathname();
 
   // Define an array of links that you want to display
-  const links = [
+  const links:Tlinks []= [
     {
       id: '1',
       name: "Home",
