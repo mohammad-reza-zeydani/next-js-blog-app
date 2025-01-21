@@ -19,7 +19,7 @@ const Button = () => {
     <div className="flex items-center gap-x-5">
        {links.map((link)=>{
         return(
-            <Link key={link.id} href={link.path} className={`text-2xl text-zinc-900 border p-2 border-gray-700 rounded-md ${pathName===link.path ? "bg-zinc-500":"bg-none"}`}>{link.name}</Link>
+            <Link key={link.id} href={link.path} className={` text-base sm:text-2xl text-zinc-900 border p-[2px] sm:p-2 border-gray-700 rounded-md ${pathName===link.path ? "bg-zinc-500":"bg-none"}`}>{link.name}</Link>
         )
        })}
     </div>

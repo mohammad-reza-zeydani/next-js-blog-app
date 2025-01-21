@@ -2,12 +2,13 @@
 import useCreateBlog from "@/hooks/useCreateBlog";
 import BlogForm from "@/components/blogForm";
 import { useMyContext } from "@/context/context";
+import { TData } from "@/components/types";
 const CreateBlog = () => {
   // mutate data to create new one
     const {mutate}=useCreateBlog()
     const {setIsSending}=useMyContext()
     // BlogForm props
-    const handleCreate = (data: { title: string; description: string; imageUrl: string;category:string }) => {
+    const handleCreate = (data:TData) => {
       // while sending data it must be true
       setIsSending(true) 
         mutate(data);
