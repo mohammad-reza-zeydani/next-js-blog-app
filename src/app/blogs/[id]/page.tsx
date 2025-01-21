@@ -7,7 +7,6 @@ const BlogInformation = async ({
   const id = (await params).id;
   const response = await fetch(`http://localhost:3000/api/blogs/${id}`);
   const blogData: TData = await response.json();
-  console.log(blogData);
   return (
     <div className='w-3/4 md:w-1/2 mx-auto space-y-2'>
       <img
