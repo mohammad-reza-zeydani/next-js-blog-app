@@ -20,7 +20,7 @@ const Button = () => {
     },
     {
       id: '2',
-      name: "Create Posts",
+      name: "Create Blog",
       path: "/create" // Path for the Create Posts page
     }
   ];
@@ -34,7 +34,7 @@ const Button = () => {
             key={link.id} 
             href={link.path} 
             // Dynamically apply classes based on whether the link's path matches the current path
-            className={`text-base sm:text-2xl text-zinc-900 border p-[2px] sm:p-2 border-gray-700 rounded-md ${pathName === link.path ? "bg-zinc-500" : "bg-none"}`}
+            className={`text-base sm:text-2xl text-zinc-900 active:bg-blue-400 border p-[2px] sm:p-2 border-gray-700 rounded-md ${pathName === link.path ? "bg-zinc-500" : "bg-none"}`}
           >
             {link.name}
           </Link>

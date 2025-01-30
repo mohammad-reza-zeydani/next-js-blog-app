@@ -18,9 +18,9 @@ export async function POST(req: Request) {
     const { title, description, imageUrl, category } = await req.json();
 
     // Validation
-    if (!title || !description || !imageUrl || !category) {
+    if (!title || !description || !category) {
       return NextResponse.json(
-        { error: "All fields are required." },
+        { error: "All fields except imageUrl are required." },
         { status: 400 }
       );
     }

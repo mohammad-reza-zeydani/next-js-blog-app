@@ -3,9 +3,10 @@ import useCreateBlog from "@/hooks/useCreateBlog";
 import BlogForm from "@/components/blogForm";
 import { useMyContext } from "@/context/context";
 import { TData } from "@/components/types";
+import Error from "@/components/error/error";
 const CreateBlog = () => {
   // mutate data to create new one
-    const {mutate}=useCreateBlog()
+    const {mutate,isError,error}=useCreateBlog()
     const {setIsSending}=useMyContext()
     // BlogForm props
     const handleCreate = (data:TData) => {
@@ -13,6 +14,7 @@ const CreateBlog = () => {
       setIsSending(true) 
         mutate(data);
       };
+      if (isError)return <Error error={error}/>
     return ( 
        <div>
         <BlogForm onSubmit={handleCreate}/>

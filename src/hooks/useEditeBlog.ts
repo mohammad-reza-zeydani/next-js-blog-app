@@ -10,7 +10,7 @@ const useEditBlog = () => {
     const { setIsSending } = useMyContext();  // Destructure setIsSending function to manage sending state
 
     // Setting up the mutation to edit a blog
-    const { mutate } = useMutation({
+    const { mutate,isError,error } = useMutation({
         mutationFn: async ({ id, data }: { id: string | string[] | undefined, data: TData }) => {
             // Sending a PUT request to update the blog by its ID
             const response = await axios.put(`/api/blogs/${id}`, data);
@@ -58,7 +58,7 @@ const useEditBlog = () => {
     });
 
     // Return the mutate function so it can be called to edit the blog
-    return { mutate };
+    return { mutate,error,isError };
 };
 
 export default useEditBlog;

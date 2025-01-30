@@ -9,7 +9,7 @@ const useDeleteBtn = () => {
     const { setIsSending } = useMyContext();  // Destructure setIsSending function to manage sending state
 
     // Setting up the mutation to delete a blog
-    const { mutate } = useMutation({
+    const { mutate,isError,error } = useMutation({
         mutationFn: async (id: string) => {
             // Sending a DELETE request to delete the blog by its ID
             const response = await axios.delete(`api/blogs/${id}`);
@@ -60,7 +60,7 @@ const useDeleteBtn = () => {
     });
 
     // Return the mutate function so it can be called to delete the blog
-    return { mutate };
+    return { mutate,error,isError };
 };
 
 export default useDeleteBtn;

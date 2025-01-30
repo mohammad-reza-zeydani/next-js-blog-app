@@ -4,20 +4,20 @@ import { useParams } from "next/navigation";
 import BlogForm from "@/components/blogForm";
 import { useMyContext } from "@/context/context";
 import { TData } from "@/components/types";
+import Error from "@/components/error/error";
 const EditeBlog = () => {
   const param=useParams()
   const id=param.id
   ; 
   console.log(id)
   const { setIsSending, formDefaultValue} = useMyContext();
-  const { mutate } = useEditeBlog();
-  // Fetch the blog data using the projectId
+  const { mutate,isError,error } = useEditeBlog();
   // Handle the edit operation
   const handleEdit = (data:TData) => {
     setIsSending(true);
-    // Pass projectId with the form data to mutate function
     mutate({ data,id});
   };
+  if (isError)return <Error error={error}/>
   return (
     <BlogForm onSubmit={handleEdit} defaultValues={formDefaultValue} />
   );

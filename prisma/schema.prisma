@@ -12,7 +12,7 @@ model Blog {
   title       String
   description String
   category    String   
-  imageUrl    String? @default("https://previews.123rf.com/images/tashatuvango/tashatuvango1703/tashatuvango170300860/73927041-my-blog-cartoon-illustration-on-purple-chalkboard-.jpg")
+  imageUrl    String 
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }

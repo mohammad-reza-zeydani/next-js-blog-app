@@ -10,7 +10,7 @@ const useCreateBlog = () => {
   const { setIsSending } = useMyContext();  // Destructure setIsSending function from the context to control the sending state
 
   // Setting up the mutation to create a new blog
-  const { mutate } = useMutation({
+  const { mutate,error,isError } = useMutation({
     mutationFn: async (data: TData) => {
       // Sending a POST request to create a new blog
       const response = await axios.post("/api/blogs", data);
@@ -62,7 +62,7 @@ const useCreateBlog = () => {
   });
 
   // Return the mutate function to trigger the blog creation mutation
-  return { mutate };
+  return { mutate,isError,error };
 };
 
 export default useCreateBlog;
